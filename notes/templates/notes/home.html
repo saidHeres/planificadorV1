@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            padding: 20px; /* Incrementamos el espacio alrededor de cada nota */
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .note-title {
+            font-weight: bold; /* Título en negrita */
+            font-size: 1.2em; /* Tamaño de fuente ligeramente más grande */
+            margin-bottom: 5px; /* Espacio inferior entre el título y la descripción */
+        }
+        .note-description {
+            font-size: 1em; /* Tamaño de fuente normal para la descripción */
+            color: #555; /* Color de texto más suave para la descripción */
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-left: 10px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .edit-link, .delete-link, .new-note-btn {
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+        .new-note-btn {
+            background-color: #007bff;
+        }
+        .edit-link {
+            background-color: #28a745;
+        }
+        .delete-link {
+            background-color: #dc3545;
+        }
+        .edit-link:hover, .delete-link:hover, .new-note-btn:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Planificador de ejercicios</h1>
+    <a class="new-note-btn" href="{% url 'new' %}">Nueva Nota</a>
+
+    <ul>
+        {% for note in object_list %}
+            <li>
+                <span class="note-title">{{ note.title }}</span><br>
+                <span class="note-description">{{ note.description }}</span>
+                <br><br>
+                <a class="edit-link" href="{% url 'edit' note.id %}">Editar</a> 
+                <a class="delete-link" href="{% url 'delete' note.id %}">Eliminar</a>
+            </li> 
+        {% endfor %}
+    </ul>
+</body>
+</html>

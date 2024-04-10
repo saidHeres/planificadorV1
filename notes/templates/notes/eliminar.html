@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Nota</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        input[type="submit"] {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Eliminar Nota</h1>
+
+    <form method="post">{% csrf_token %}
+        <p>¿Estás seguro de que deseas eliminar "{{ object.title }}"?</p>
+        {{ form }}
+        <input type="submit" value="Confirmar">
+    </form>
+</body>
+</html>
